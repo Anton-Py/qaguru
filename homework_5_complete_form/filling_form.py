@@ -29,7 +29,7 @@ def test_validate_after_5_seconds_selene():
     browser.element('[aria-label="Choose Friday, November 18th, 1988"]').click()
 
     # subjects
-    browser.element('#subjectsInput').should(be.visible).type('AQA').click()
+    browser.element('#subjectsInput').type('Economics').press_enter()
 
     # hobbies
     browser.element('[for="hobbies-checkbox-1"]').click()
@@ -54,7 +54,7 @@ def test_validate_after_5_seconds_selene():
             'Gender', 'Male',
             'Mobile', '9130017081',
             'Date of Birth', '18 November,1988',
-            'Subjects', '',
+            'Subjects', 'Economics',
             'Hobbies', 'Sports',
             'Picture', 'picture.png',
             'Address', 'Novosibirsk, Griboedova 80',

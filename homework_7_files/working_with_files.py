@@ -1,3 +1,5 @@
+import time
+
 from pypdf import PdfReader
 from zipfile import ZipFile
 from openpyxl import load_workbook
@@ -23,14 +25,13 @@ def test_working_with_xlsx_file(create_archive):
 
         assert expected_text in page_text
 
+
 def test_working_with_csv_file(create_archive):
     with ZipFile(create_archive) as zip_file:
-            csv_file = zip_file.open("users.csv")
-            content = csv_file.read().decode('utf-8-sig')
-            csvreader = list(csv.reader(content.splitlines()))
-            page_text = csvreader[2]
-            expected_text = "autotest1@autotest.clients"
+        csv_file = zip_file.open("users.csv")
+        content = csv_file.read().decode('utf-8-sig')
+        csvreader = list(csv.reader(content.splitlines()))
+        page_text = csvreader[2]
+        expected_text = "autotest1@autotest.clients"
 
-            assert expected_text in page_text
-
-
+        assert expected_text in page_text

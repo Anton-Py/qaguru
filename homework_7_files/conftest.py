@@ -10,16 +10,13 @@ def check_and_remove_archive(directory):
     if os.path.exists(archive_path):
         print(f"Архив {archive_path} уже существует и будет удален.")
         os.remove(archive_path)
-    else:
-        print(f"Архив {archive_path} не существует. Он будет создан.")
+    # else:
+    #     print(f"Архив {archive_path} не существует. Он будет создан.")
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def create_archive():
-    check_and_remove_archive(DATA_DIR)
-
     archives_path = os.path.join(DATA_DIR, "big_archives.zip")
-    # print(archives_path)
 
     with ZipFile(archives_path, "w") as zip_file:
         names = ['file_example_XLSX_50.xlsx', 'users.csv', 'КП_выпускные_2025.pdf']
@@ -27,6 +24,7 @@ def create_archive():
             file_to_add = os.path.join(DATA_DIR, arc_name)
             zip_file.write(file_to_add, arcname=arc_name)  # добавляем файл в архив
 
-        # print(zip_file.namelist())
 
-    return archives_path
+    yield archives_path
+
+    check_and_remove_archive(DATA_DIR)

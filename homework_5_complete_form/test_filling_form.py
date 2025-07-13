@@ -2,7 +2,7 @@ from selene import browser, be, have
 import os
 
 
-def test_validate_after_5_seconds_selene():
+def test_practice_form_filling():
     browser.open("/")
 
     # first_name
@@ -35,7 +35,7 @@ def test_validate_after_5_seconds_selene():
     browser.element('[for="hobbies-checkbox-1"]').click()
 
     # picture_upload
-    file_path = 'date/picture.png'
+    file_path = 'files/picture.png'
     browser.element('#uploadPicture').send_keys(os.path.abspath(file_path))
 
     # current_address

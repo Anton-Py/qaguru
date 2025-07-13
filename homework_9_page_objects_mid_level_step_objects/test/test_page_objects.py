@@ -1,4 +1,4 @@
-from homework_9_page_objects.pages.registration_page import RegistrationPage
+from homework_9_page_objects_mid_level_step_objects.pages.registration_page import RegistrationPage
 from selene import browser, be, have
 import os
 

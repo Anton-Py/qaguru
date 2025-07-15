@@ -21,7 +21,8 @@ class RegistrationPage:
         ).click()
         browser.element('#subjectsInput').type(user.subjects).press_enter()
         browser.all('#hobbiesWrapper label').element_by(have.exact_text(user.hobbies)).click()
-        file_path = f'../files/{user.picture}'
+        file_path = os.path.join(os.path.dirname(__file__), f'../files/{user.picture}')
+        # file_path = f'../files/{user.picture}'
         browser.element('#uploadPicture').send_keys(os.path.abspath(file_path))
         browser.element('#currentAddress').should(be.visible).type(user.address).click()
         browser.element('#react-select-3-input').should(be.visible).type(user.state).press_enter()

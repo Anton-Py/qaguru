@@ -35,7 +35,7 @@ class RegistrationPage:
         browser.element('[for="hobbies-checkbox-1"]').click()
 
     def picture_upload(self):
-        file_path = '../files/picture.png'
+        file_path = os.path.join(os.path.dirname(__file__), '../files/picture.png')
         browser.element('#uploadPicture').send_keys(os.path.abspath(file_path))
 
     def fill_current_address(self, address, state, city):
